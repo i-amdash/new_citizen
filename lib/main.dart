@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:landmark_citizen/widgets/current_balance.dart';
 import 'package:landmark_citizen/widgets/home_event_card.dart';
 import 'package:landmark_citizen/widgets/home_menu_title.dart';
+import 'package:landmark_citizen/widgets/menu_type_accordion.dart';
+import 'package:landmark_citizen/widgets/menu_type_regular.dart';
 import 'package:landmark_citizen/widgets/offerings_card.dart';
 import 'package:landmark_citizen/widgets/quick_access.dart';
 import 'package:landmark_citizen/widgets/quick_access_outline.dart';
@@ -96,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: const Center(
+      body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
@@ -123,15 +125,23 @@ class _MyHomePageState extends State<MyHomePage> {
             //   style: Theme.of(context).textTheme.headlineMedium,
             // )
             // ,
-            CurrentBalance(),
+            MenuTypeAccordion(onTap: (){}, image: "", title: "Group of 20", subtitle: "N157,000"),
+            SizedBox(
+              height: 2,
+            ),
+            MenuTypeRegular(onTap: () {}, image: "assets/icons/Ticket.png", title: "Beach Ticket", subtitle: "Buy a beach ticket"),
+            SizedBox(
+              height: 2,
+            ),
+
+            CurrentBalance(amount: 'N350,000', image: 'assets/icons/upside_down_house.png', title: 'Current Balance', onTap: () {  },),
             // SizedBox(height: 12,),
             // QuickAccessRounded(),
             // SizedBox(height: 12,),
             // QuickAccessOutline(),
             SizedBox(height: 12,),
             QuickAccess(),
-            HomeMenuTitle(),
-           OfferingsCard()
+
             // SizedBox(
             //     height: MediaQuery.of(context).size.height * 0.9,
             //     width: MediaQuery.of(context).size.width * 0.9,

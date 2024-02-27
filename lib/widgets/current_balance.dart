@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 
 class CurrentBalance extends StatelessWidget {
-  const CurrentBalance({Key? key}) : super(key: key);
+  const CurrentBalance({super.key,
+    required this.onTap,
+    required this.image,
+    required this.title,
+    required this.amount,
+  });
+
+  final VoidCallback onTap;
+  final String image;
+  final String title;
+  final String amount;
 
   @override
   Widget build(BuildContext context) {
@@ -22,24 +32,26 @@ class CurrentBalance extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                 const Column(
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Current Balance', style: TextStyle(
+                      Text(title, style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold
                       ),),
-                      Text('N250,000', style: TextStyle(
+                      SizedBox(
+                        height: 2,
+                      ),
+                      Text(amount, style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold
                       ),)
                     ],
                   ),
                   ElevatedButton(
-                    clipBehavior: Clip.hardEdge,
                     onPressed: () {
-                    print('wallet top up');
+                    onTap;
                   }, child: const Text('Top Up Wallet', style: TextStyle(
                     color: Color(0xFF252D60)
                   ),),)
@@ -47,7 +59,7 @@ class CurrentBalance extends StatelessWidget {
               ),
 
               ClipRRect(
-                child: Image.asset("assets/icons/upside_down_house.png", height: 100, width: 100, fit: BoxFit.fill,),
+                child: Image.asset(image, height: 100, width: 100, fit: BoxFit.fill,),
               )
             ]
           ),
