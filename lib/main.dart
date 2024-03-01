@@ -1,5 +1,8 @@
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:landmark_citizen/core/config/colors.dart';
+import 'package:landmark_citizen/core/config/helpers.dart';
 import 'package:landmark_citizen/widgets/current_balance.dart';
 import 'package:landmark_citizen/widgets/home_event_card.dart';
 import 'package:landmark_citizen/widgets/home_menu_title.dart';
@@ -10,6 +13,7 @@ import 'package:landmark_citizen/widgets/quick_access.dart';
 import 'package:landmark_citizen/widgets/quick_access_outline.dart';
 import 'package:landmark_citizen/widgets/quick_access_rounded.dart';
 import 'package:landmark_citizen/widgets/run_zest.dart';
+import 'package:landmark_citizen/widgets/ticket_counter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -125,6 +129,14 @@ class _MyHomePageState extends State<MyHomePage> {
             //   style: Theme.of(context).textTheme.headlineMedium,
             // )
             // ,
+
+            // SizedBox(
+            //     width: AppHelpers.getProportionateScreenSize(size: 60),
+            //     height: AppHelpers.getProportionateScreenSize(size: 60),
+            //     child: TicketCounter(headerText: "Adult", color: AppColors.appPrimaryColor, bodyText: "13 and above", onTapPlus: () {}, onTapMinus: () {}, value: "12000")),
+            // SizedBox(
+            //   height: 2,
+            // ),
             MenuTypeAccordion(onTap: (){}, image: "", title: "Group of 20", subtitle: "N157,000"),
             SizedBox(
               height: 2,
@@ -149,6 +161,18 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+        bottomNavigationBar: ConvexAppBar(
+          color: AppColors.appWhiteColor,
+          backgroundColor: AppColors.appPrimaryColor,
+          items: const [
+            TabItem(icon: Icons.home, title: 'Home'),
+            TabItem(icon: Icons.wallet, title: 'Wallet'),
+            TabItem(icon: Icons.add, title: 'Bookings'),
+            TabItem(icon: Icons.message, title: 'Transaction'),
+            TabItem(icon: Icons.people, title: 'Profile'),
+          ],
+          onTap: (int i) => print('click index=$i'),
+        )
       // floatingActionButton: FloatingActionButton(
       //   onPressed: _incrementCounter,
       //   tooltip: 'Increment',
